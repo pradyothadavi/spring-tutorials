@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<!-- Tells Spring to scan the codebase for dependency requirements -->
+	<context:annotation-config/>
+	
+	<!-- Tells Spring to scan the code for injectable beans under the package (and all its subpackages) specified.
+			Multiple packages can be defined by using either a comma, a semicolon, or a space as the delimiter. -->
+	<context:component-scan base-package="org.prayogshaale.spring_tutorials"></context:component-scan>
+	
+</beans>
