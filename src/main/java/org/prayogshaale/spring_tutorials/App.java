@@ -17,6 +17,9 @@ public class App
 		MessageRenderer messageRenderer = ctx.getBean("messageRenderer", MessageRenderer.class);
 		messageRenderer.render();
 
+		SimpleInjection simleInjection = ctx.getBean("simpleInjection", SimpleInjection.class);
+		System.out.println(simleInjection.toString());
+
 		ctx.close();
 	}
 }
