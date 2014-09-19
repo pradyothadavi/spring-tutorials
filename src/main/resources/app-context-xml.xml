@@ -18,6 +18,14 @@
 		</property>
 	</bean>
 	
+	<!-- 
 	<bean id="messageProvider" class="org.prayogshaale.spring_tutorials.HelloWorldMessageProvider" />
+	 -->
+	
+	<bean id="messageProvider" class="org.prayogshaale.spring_tutorials.ConfigurableMessageProvider" >
+		<constructor-arg>
+			<value>This is a configurable message.</value>
+		</constructor-arg>
+	</bean>
 	
 </beans>

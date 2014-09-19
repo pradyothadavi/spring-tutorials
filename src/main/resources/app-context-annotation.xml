@@ -19,4 +19,8 @@
 			Multiple packages can be defined by using either a comma, a semicolon, or a space as the delimiter. -->
 	<context:component-scan base-package="org.prayogshaale.spring_tutorials"></context:component-scan>
 	
+	<bean id="message" class="java.lang.String" 
+		c:_0 = "This is a configurable message." />
+	
+	
 </beans>

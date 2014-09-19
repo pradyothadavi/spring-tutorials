@@ -22,6 +22,7 @@ public class StandardOutMessageRenderer implements MessageRenderer
 	 * result. It provides more fine grained DI requirement.
 	 */
 	@Autowired
+	// @Resource (name = "messageProviderWithConstructionArg")
 	private MessageProvider messageProvider = null;
 
 	public void render()
