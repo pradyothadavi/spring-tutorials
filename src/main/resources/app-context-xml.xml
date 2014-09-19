@@ -28,4 +28,28 @@
 		</constructor-arg>
 	</bean>
 	
+	<bean id="injectBean" class="java.lang.String">
+		<constructor-arg>
+			<value>Bean in child with id - injectBean.</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="target1" class="org.prayogshaale.spring_tutorials.SimpleTarget">
+		<property name="value">
+			<ref bean="injectBeanParent" />
+		</property>
+	</bean>
+	
+	<bean id="target2" class="org.prayogshaale.spring_tutorials.SimpleTarget">
+		<property name="value">
+			<ref bean="injectBean" />
+		</property>
+	</bean>
+	
+	<bean id="target3" class="org.prayogshaale.spring_tutorials.SimpleTarget">
+		<property name="value">
+			<ref parent="injectBean" />
+		</property>
+	</bean>
+	
 </beans>
