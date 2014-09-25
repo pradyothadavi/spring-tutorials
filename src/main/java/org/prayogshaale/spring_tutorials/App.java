@@ -41,6 +41,9 @@ public class App
 		SimpleTarget target3 = ctx_child.getBean("target3", SimpleTarget.class);
 		System.out.println(target3);
 
+		CollectionInjection collectionInjection = ctx_child.getBean("collectionInjection", CollectionInjection.class);
+		collectionInjection.displayCollectionInjection();
+
 		ctx.close();
 		ctx_parent.close();
 		ctx_child.close();
