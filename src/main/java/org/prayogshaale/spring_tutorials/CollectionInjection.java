@@ -27,8 +27,8 @@ public class CollectionInjection
 
 	@Resource (name = "set")
 	private Set set;
-
-	@Resource (name = "list")
+	
+	@Resource(name="list")
 	private List list;
 
 	/**

@@ -83,4 +83,17 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="lookUpHelper" class="org.prayogshaale.spring_tutorials.LookUpHelper"></bean>
+	
+	<bean id="standardLookUp" class="org.prayogshaale.spring_tutorials.StandardLookUp">
+		<property name="lookUpHelper">
+			<ref bean="lookUpHelper"/>
+		</property>
+	</bean>
+	
+	<!-- This would return a new instance each time. Note: cglib dependency must be added to the project. -->
+	<bean id="abstractLookUp" class="org.prayogshaale.spring_tutorials.AbstractLookUp">
+		<lookup-method name="getLookUpHelper" bean="lookUpHelper"/>
+	</bean>
 </beans>

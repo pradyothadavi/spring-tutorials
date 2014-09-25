@@ -1,6 +1,7 @@
 package org.prayogshaale.spring_tutorials;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.util.StopWatch;
 
 /**
  * Hello world!
@@ -45,8 +46,35 @@ public class App
 		CollectionInjection collectionInjection = ctx.getBean("collectionInjection", CollectionInjection.class);
 		collectionInjection.displayCollectionInjection();
 
+		LookUpMethodInjection standardLookUp = ctx_child.getBean("standardLookUp", StandardLookUp.class);
+		LookUpMethodInjection abstractLookUp = ctx_child.getBean("abstractLookUp", AbstractLookUp.class);
+
+		displayLookUpInjectionInfo(standardLookUp);
+		displayLookUpInjectionInfo(abstractLookUp);
+
 		ctx.close();
 		ctx_parent.close();
 		ctx_child.close();
+	}
+
+	public static void displayLookUpInjectionInfo(LookUpMethodInjection lookUpMethodInjection)
+	{
+		LookUpHelper h1 = lookUpMethodInjection.getLookUpHelper();
+		LookUpHelper h2 = lookUpMethodInjection.getLookUpHelper();
+
+		System.out.println("Are the helper instances same ? " + (h1 == h2));
+
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start("lookUpMethodInjection");
+
+		for (int i = 0; i < 100000; i++)
+		{
+			LookUpHelper h = lookUpMethodInjection.getLookUpHelper();
+			h.doSomethingHelpful();
+		}
+
+		stopWatch.stop();
+
+		System.out.println("100000 get took " + stopWatch.getTotalTimeMillis() + " ms");
 	}
 }
