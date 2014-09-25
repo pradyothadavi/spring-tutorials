@@ -9,14 +9,26 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 /**
  * @author pradyot.ha
  */
+@Service ("collectionInjection")
 public class CollectionInjection
 {
+	@Resource (name = "map")
 	private Map<String, Object> map;
+
+	@Resource (name = "props")
 	private Properties props;
+
+	@Resource (name = "set")
 	private Set set;
+
+	@Resource (name = "list")
 	private List list;
 
 	/**

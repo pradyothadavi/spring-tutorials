@@ -21,6 +21,7 @@ public class App
 
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 		ctx.load("classpath:app-context-annotation.xml");
+		ctx.setParent(ctx_child);
 		ctx.refresh();
 
 		MessageRenderer messageRenderer = ctx.getBean("messageRenderer", MessageRenderer.class);
@@ -41,7 +42,7 @@ public class App
 		SimpleTarget target3 = ctx_child.getBean("target3", SimpleTarget.class);
 		System.out.println(target3);
 
-		CollectionInjection collectionInjection = ctx_child.getBean("collectionInjection", CollectionInjection.class);
+		CollectionInjection collectionInjection = ctx.getBean("collectionInjection", CollectionInjection.class);
 		collectionInjection.displayCollectionInjection();
 
 		ctx.close();
