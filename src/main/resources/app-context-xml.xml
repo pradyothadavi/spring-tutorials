@@ -96,4 +96,24 @@
 	<bean id="abstractLookUp" class="org.prayogshaale.spring_tutorials.AbstractLookUp">
 		<lookup-method name="getLookUpHelper" bean="lookUpHelper"/>
 	</bean>
+	
+	<bean id="withoutMethodReplacementBean" class="org.prayogshaale.spring_tutorials.ReplacementTarget"></bean>
+	
+	<bean id="methodReplacementBean" class="org.prayogshaale.spring_tutorials.ReplacementTarget">
+		<replaced-method name="formatMessage" replacer="methodReplacer">
+			<arg-type>String</arg-type>
+		</replaced-method>
+	</bean>
+	
+	<bean id="methodReplacer" class="org.prayogshaale.spring_tutorials.MethodReplacement"></bean>
+	
+	<bean id="inheritParentBean" class="org.prayogshaale.spring_tutorials.BeanInheritance">
+		<property name="name"><value>Pradyot H Adavi</value></property>
+		<property name="age"><value>25</value></property>
+	</bean>
+	
+	<bean id="inheritChildBean" class="org.prayogshaale.spring_tutorials.BeanInheritance" parent="inheritParentBean">
+		<property name="age"><value>24</value></property>
+	</bean>
+
 </beans>

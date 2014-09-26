@@ -52,6 +52,19 @@ public class App
 		displayLookUpInjectionInfo(standardLookUp);
 		displayLookUpInjectionInfo(abstractLookUp);
 
+		ReplacementTarget withoutReplacementMethod =
+		        ctx_child.getBean("withoutMethodReplacementBean", ReplacementTarget.class);
+		ReplacementTarget withReplacementMethod = ctx_child.getBean("methodReplacementBean", ReplacementTarget.class);
+
+		displayMethodReplacementInfo(withoutReplacementMethod);
+		displayMethodReplacementInfo(withReplacementMethod);
+
+		BeanInheritance parent = ctx_child.getBean("inheritParentBean", BeanInheritance.class);
+		System.out.println(parent);
+
+		BeanInheritance child = ctx_child.getBean("inheritChildBean", BeanInheritance.class);
+		System.out.println(child);
+
 		ctx.close();
 		ctx_parent.close();
 		ctx_child.close();
@@ -76,5 +89,21 @@ public class App
 		stopWatch.stop();
 
 		System.out.println("100000 get took " + stopWatch.getTotalTimeMillis() + " ms");
+	}
+
+	public static void displayMethodReplacementInfo(ReplacementTarget target)
+	{
+		System.out.println(target.formatMessage("Hello World"));
+
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start("methodReplacement");
+
+		for (int i = 0; i < 100000; i++)
+		{
+			target.formatMessage("Hello World");
+		}
+		stopWatch.stop();
+
+		System.out.println("100000 invocations took " + stopWatch.getTotalTimeMillis() + " ms");
 	}
 }
