@@ -1,5 +1,6 @@
 package org.prayogshaale.spring_tutorials;
 
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.util.StopWatch;
 
@@ -64,6 +65,20 @@ public class App
 
 		BeanInheritance child = ctx_child.getBean("inheritChildBean", BeanInheritance.class);
 		System.out.println(child);
+
+		BeanInitMethod allValues = ctx_child.getBean("methodInitWithAllValues", BeanInitMethod.class);
+		System.out.println(allValues);
+		BeanInitMethod withoutName = ctx_child.getBean("methodInitWithoutName", BeanInitMethod.class);
+		System.out.println(withoutName);
+		try
+		{
+			BeanInitMethod withoutAge = ctx_child.getBean("methodInitWithoutAge", BeanInitMethod.class);
+			System.out.println(withoutAge);
+		}
+		catch (BeanCreationException e)
+		{
+			System.out.println(e.getMessage());
+		}
 
 		ctx.close();
 		ctx_parent.close();

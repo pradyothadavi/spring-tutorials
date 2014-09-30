@@ -10,7 +10,8 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd
 	http://www.springframework.org/schema/util 
-	http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+	http://www.springframework.org/schema/util/spring-util-3.1.xsd"
+	default-lazy-init="true">
 
 	<bean id="messageRenderer" class="org.prayogshaale.spring_tutorials.StandardOutMessageRenderer">
 		<property name="messageProvider">
@@ -116,4 +117,17 @@
 		<property name="age"><value>24</value></property>
 	</bean>
 
+	<bean id="methodInitWithAllValues" class="org.prayogshaale.spring_tutorials.BeanInitMethod" init-method="init">
+		<property name="name"><value>Manzoor</value></property>
+		<property name="age"><value>28</value></property>
+	</bean>
+	
+	<bean id="methodInitWithoutName" class="org.prayogshaale.spring_tutorials.BeanInitMethod" init-method="init">
+		<property name="age"><value>25</value></property>
+	</bean>
+	
+	<bean id="methodInitWithoutAge" class="org.prayogshaale.spring_tutorials.BeanInitMethod" init-method="init">
+		<property name="name"><value>Manzoor</value></property>
+	</bean>
+	
 </beans>
